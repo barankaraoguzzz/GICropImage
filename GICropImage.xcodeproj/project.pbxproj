@@ -13,6 +13,9 @@
 		041F1F1B229ABE9C0036FCC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041F1F19229ABE9C0036FCC4 /* LaunchScreen.storyboard */; };
 		041F1F26229ABE9C0036FCC4 /* GICropImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F1F25229ABE9C0036FCC4 /* GICropImageTests.swift */; };
 		041F1F31229ABE9C0036FCC4 /* GICropImageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F1F30229ABE9C0036FCC4 /* GICropImageUITests.swift */; };
+		041F1F40229ABF9C0036FCC4 /* GIImageCropVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F1F3F229ABF9C0036FCC4 /* GIImageCropVC.swift */; };
+		041F1F45229AC09A0036FCC4 /* GIZoomingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F1F44229AC09A0036FCC4 /* GIZoomingScrollView.swift */; };
+		041F1F48229ACBCF0036FCC4 /* CroppingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F1F47229ACBCF0036FCC4 /* CroppingType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,9 @@
 		041F1F2C229ABE9C0036FCC4 /* GICropImageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GICropImageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		041F1F30229ABE9C0036FCC4 /* GICropImageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GICropImageUITests.swift; sourceTree = "<group>"; };
 		041F1F32229ABE9C0036FCC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		041F1F3F229ABF9C0036FCC4 /* GIImageCropVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIImageCropVC.swift; sourceTree = "<group>"; };
+		041F1F44229AC09A0036FCC4 /* GIZoomingScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIZoomingScrollView.swift; sourceTree = "<group>"; };
+		041F1F47229ACBCF0036FCC4 /* CroppingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CroppingType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +101,9 @@
 		041F1F0F229ABE9B0036FCC4 /* GICropImage */ = {
 			isa = PBXGroup;
 			children = (
+				041F1F46229ACBA80036FCC4 /* Helper */,
+				041F1F41229AC0130036FCC4 /* HelperView */,
+				041F1F3E229ABF7E0036FCC4 /* ViewController */,
 				041F1F10229ABE9B0036FCC4 /* AppDelegate.swift */,
 				041F1F14229ABE9C0036FCC4 /* Main.storyboard */,
 				041F1F17229ABE9C0036FCC4 /* Assets.xcassets */,
@@ -120,6 +129,30 @@
 				041F1F32229ABE9C0036FCC4 /* Info.plist */,
 			);
 			path = GICropImageUITests;
+			sourceTree = "<group>";
+		};
+		041F1F3E229ABF7E0036FCC4 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				041F1F3F229ABF9C0036FCC4 /* GIImageCropVC.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		041F1F41229AC0130036FCC4 /* HelperView */ = {
+			isa = PBXGroup;
+			children = (
+				041F1F44229AC09A0036FCC4 /* GIZoomingScrollView.swift */,
+			);
+			path = HelperView;
+			sourceTree = "<group>";
+		};
+		041F1F46229ACBA80036FCC4 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				041F1F47229ACBCF0036FCC4 /* CroppingType.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +286,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				041F1F45229AC09A0036FCC4 /* GIZoomingScrollView.swift in Sources */,
+				041F1F48229ACBCF0036FCC4 /* CroppingType.swift in Sources */,
+				041F1F40229ABF9C0036FCC4 /* GIImageCropVC.swift in Sources */,
 				041F1F11229ABE9B0036FCC4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

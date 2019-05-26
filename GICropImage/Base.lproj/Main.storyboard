@@ -6,6 +6,105 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Image CropVC-->
+        <scene sceneID="V0k-4R-8Xa">
+            <objects>
+                <viewController storyboardIdentifier="ImageCropVC" id="qFB-gJ-hFh" customClass="GIImageCropVC" customModule="GICropImage" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kgD-Q6-HEu"/>
+                        <viewControllerLayoutGuide type="bottom" id="osb-rD-JPa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="su5-6o-H39">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AJa-IY-rnF">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FEu-uF-RjC">
+                                        <rect key="frame" x="9.5" y="125.5" width="356" height="356"/>
+                                        <subviews>
+                                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjh-af-aXZ" customClass="GIZoomingScrollView" customModule="GICropImage" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="356" height="356"/>
+                                            </scrollView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="FEu-uF-RjC" secondAttribute="height" id="50D-Tg-W1g"/>
+                                            <constraint firstAttribute="trailing" secondItem="pjh-af-aXZ" secondAttribute="trailing" id="FpU-Vy-vQL"/>
+                                            <constraint firstItem="pjh-af-aXZ" firstAttribute="leading" secondItem="FEu-uF-RjC" secondAttribute="leading" id="JUB-l3-W17"/>
+                                            <constraint firstAttribute="bottom" secondItem="pjh-af-aXZ" secondAttribute="bottom" id="OUf-dG-PMg"/>
+                                            <constraint firstItem="pjh-af-aXZ" firstAttribute="top" secondItem="FEu-uF-RjC" secondAttribute="top" id="rmA-EK-76l"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="FEu-uF-RjC" firstAttribute="width" secondItem="AJa-IY-rnF" secondAttribute="width" multiplier="0.95" id="BGr-Z5-zhG"/>
+                                    <constraint firstItem="FEu-uF-RjC" firstAttribute="centerY" secondItem="AJa-IY-rnF" secondAttribute="centerY" id="dcG-Lf-cb4"/>
+                                    <constraint firstItem="FEu-uF-RjC" firstAttribute="centerX" secondItem="AJa-IY-rnF" secondAttribute="centerX" id="rZu-qr-xQr"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oEh-oO-jCZ">
+                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gI-hI-fRP">
+                                        <rect key="frame" x="333" y="10" width="30" height="40"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                        <state key="normal" title="Seç">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cropImgAct:" destination="qFB-gJ-hFh" eventType="touchUpInside" id="3A7-FN-p30"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qK-fR-CbS">
+                                        <rect key="frame" x="12" y="10" width="56" height="40"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                        <state key="normal" title="Vazgeç">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelButtonAct:" destination="qFB-gJ-hFh" eventType="touchUpInside" id="FXm-WZ-0mC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1370021049" green="0.1370021049" blue="0.1370021049" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="GtP-C2-IuU"/>
+                                    <constraint firstAttribute="trailing" secondItem="6gI-hI-fRP" secondAttribute="trailing" constant="12" id="Jej-x4-cUM"/>
+                                    <constraint firstItem="0qK-fR-CbS" firstAttribute="top" secondItem="oEh-oO-jCZ" secondAttribute="top" constant="10" id="TSY-Rl-sR4"/>
+                                    <constraint firstItem="6gI-hI-fRP" firstAttribute="top" secondItem="oEh-oO-jCZ" secondAttribute="top" constant="10" id="dzB-Ep-RV6"/>
+                                    <constraint firstAttribute="bottom" secondItem="0qK-fR-CbS" secondAttribute="bottom" constant="10" id="prC-W3-5nr"/>
+                                    <constraint firstItem="0qK-fR-CbS" firstAttribute="leading" secondItem="oEh-oO-jCZ" secondAttribute="leading" constant="12" id="sB0-zA-BDq"/>
+                                    <constraint firstAttribute="bottom" secondItem="6gI-hI-fRP" secondAttribute="bottom" constant="10" id="vRZ-gG-2kM"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="AJa-IY-rnF" firstAttribute="leading" secondItem="su5-6o-H39" secondAttribute="leading" id="3Jr-Ft-7Cl"/>
+                            <constraint firstAttribute="trailing" secondItem="AJa-IY-rnF" secondAttribute="trailing" id="3lN-Dk-yRH"/>
+                            <constraint firstAttribute="bottom" secondItem="oEh-oO-jCZ" secondAttribute="bottom" id="N8S-3j-inT"/>
+                            <constraint firstItem="oEh-oO-jCZ" firstAttribute="top" secondItem="AJa-IY-rnF" secondAttribute="bottom" id="P6k-cj-Tnc"/>
+                            <constraint firstItem="AJa-IY-rnF" firstAttribute="top" secondItem="su5-6o-H39" secondAttribute="top" id="bRj-oU-qw1"/>
+                            <constraint firstAttribute="trailing" secondItem="oEh-oO-jCZ" secondAttribute="trailing" id="gsq-dF-KJj"/>
+                            <constraint firstItem="oEh-oO-jCZ" firstAttribute="leading" secondItem="su5-6o-H39" secondAttribute="leading" id="ibm-aO-GvF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8Be-AU-wVl"/>
+                    </view>
+                    <connections>
+                        <outlet property="filterView" destination="AJa-IY-rnF" id="uhS-eZ-Fqx"/>
+                        <outlet property="scrollView" destination="pjh-af-aXZ" id="pli-3Q-rvP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dui-Dy-TXS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2656.8000000000002" y="1034.9325337331336"/>
+        </scene>
+    </scenes>
 </document>
