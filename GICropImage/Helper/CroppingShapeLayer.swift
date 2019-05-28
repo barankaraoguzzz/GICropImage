@@ -9,47 +9,46 @@
 import UIKit
 
 
-protocol ShapeDrawing {
+protocol ShapeLayerDrawing {
     func draw()
 }
 
-protocol CroppingShapeProperties: ShapeDrawing  {
-    
+protocol GeneralShapeLayerProperties: ShapeLayerDrawing  {
+    var superView           : UIView {get set}
     var blurFilterMask      : CAShapeLayer {get}
     var blurFilterOrigin    : CGPoint {get}
 }
 
-protocol CircleCroppingShapeProperties: CroppingShapeProperties {
+extension GeneralShapeLayerProperties {
+    internal var blurFilterMask : CAShapeLayer {
+        let maskLayer = CAShapeLayer()
+        maskLayer.fillColor = UIColor.black.cgColor
+        maskLayer.fillRule = .evenOdd
+        maskLayer.frame    = superView.bounds
+        maskLayer.opacity  = 0.8;
+        return maskLayer
+    }
+    
+    internal var blurFilterOrigin: CGPoint {
+        return (self.superView.center)
+    }
+}
+
+protocol CircleShapeLayerProperties: GeneralShapeLayerProperties {
     var ovalRectMask  : CAShapeLayer {get}
     var ovalRect      : CGRect {get}
     var blurFilterDiameter  : CGFloat {get}
 }
 
 
-
-
-struct CircleCropping : CircleCroppingShapeProperties {
-   
-    var superView: UIView?
+struct CircleShapeLayer : CircleShapeLayerProperties {
+    var superView: UIView
     
-    var blurFilterMask: CAShapeLayer {
-        let maskLayer = CAShapeLayer()
-        maskLayer.fillColor = UIColor.black.cgColor
-        maskLayer.fillRule = .evenOdd
-        maskLayer.frame    = (self.superView?.bounds)!
-        maskLayer.opacity  = 0.8;
-        return maskLayer
+    internal var blurFilterDiameter: CGFloat {
+        return min((self.superView.bounds.size.width), (self.superView.bounds.size.height)) * 0.95
     }
     
-    var blurFilterOrigin: CGPoint {
-        return (self.superView?.center)!
-    }
-    
-    var blurFilterDiameter: CGFloat {
-        return min((self.superView?.bounds.size.width)!, (self.superView?.bounds.size.height)!) * 0.95
-    }
-    
-    var ovalRectMask: CAShapeLayer {
+    internal var ovalRectMask: CAShapeLayer {
         let ovalRectLayer = CAShapeLayer()
         ovalRectLayer.strokeColor = UIColor.white.withAlphaComponent(0.8).cgColor
         ovalRectLayer.fillColor   = UIColor.clear.cgColor;
@@ -57,7 +56,7 @@ struct CircleCropping : CircleCroppingShapeProperties {
         return ovalRectLayer
     }
     
-    var ovalRect: CGRect {
+    internal var ovalRect: CGRect {
         return CGRect(x: self.blurFilterOrigin.x - (blurFilterDiameter / 2),
                       y: self.blurFilterOrigin.y - (blurFilterDiameter / 2),
                       width: self.blurFilterDiameter,
@@ -65,12 +64,6 @@ struct CircleCropping : CircleCroppingShapeProperties {
     }
     
     func draw() {
-        
-    
+        print(blurFilterOrigin)
     }
-    
 }
-
-
-
-

@@ -12,8 +12,16 @@ class GIImageCropVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        self.getShape(.circle(view: self.view)).draw()
+        self.getShape(.square(view: self.view)).draw()
+        
     }
 
+    @discardableResult
+    func getShape(_ shapeType: ShapeLayerTarget) -> GeneralShapeLayerProperties {
+        return shapeType.getLayerType
+    }
+    
+    
 }

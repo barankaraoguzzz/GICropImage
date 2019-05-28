@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qFB-gJ-hFh">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -58,9 +58,6 @@
                                         <state key="normal" title="Seç">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <action selector="cropImgAct:" destination="qFB-gJ-hFh" eventType="touchUpInside" id="3A7-FN-p30"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qK-fR-CbS">
                                         <rect key="frame" x="12" y="10" width="56" height="40"/>
@@ -68,9 +65,6 @@
                                         <state key="normal" title="Vazgeç">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <action selector="cancelButtonAct:" destination="qFB-gJ-hFh" eventType="touchUpInside" id="FXm-WZ-0mC"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1370021049" green="0.1370021049" blue="0.1370021049" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -97,10 +91,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8Be-AU-wVl"/>
                     </view>
-                    <connections>
-                        <outlet property="filterView" destination="AJa-IY-rnF" id="uhS-eZ-Fqx"/>
-                        <outlet property="scrollView" destination="pjh-af-aXZ" id="pli-3Q-rvP"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dui-Dy-TXS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

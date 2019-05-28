@@ -15,7 +15,8 @@
 		041F1F31229ABE9C0036FCC4 /* GICropImageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F1F30229ABE9C0036FCC4 /* GICropImageUITests.swift */; };
 		041F1F40229ABF9C0036FCC4 /* GIImageCropVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F1F3F229ABF9C0036FCC4 /* GIImageCropVC.swift */; };
 		041F1F45229AC09A0036FCC4 /* GIZoomingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F1F44229AC09A0036FCC4 /* GIZoomingScrollView.swift */; };
-		041F1F48229ACBCF0036FCC4 /* CroppingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F1F47229ACBCF0036FCC4 /* CroppingType.swift */; };
+		041F1F48229ACBCF0036FCC4 /* CroppingShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F1F47229ACBCF0036FCC4 /* CroppingShapeLayer.swift */; };
+		04F090B3229D164700C7F943 /* ShapeLayerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F090B2229D164700C7F943 /* ShapeLayerType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +51,8 @@
 		041F1F32229ABE9C0036FCC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		041F1F3F229ABF9C0036FCC4 /* GIImageCropVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIImageCropVC.swift; sourceTree = "<group>"; };
 		041F1F44229AC09A0036FCC4 /* GIZoomingScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIZoomingScrollView.swift; sourceTree = "<group>"; };
-		041F1F47229ACBCF0036FCC4 /* CroppingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CroppingType.swift; sourceTree = "<group>"; };
+		041F1F47229ACBCF0036FCC4 /* CroppingShapeLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CroppingShapeLayer.swift; sourceTree = "<group>"; };
+		04F090B2229D164700C7F943 /* ShapeLayerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeLayerType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,7 +152,8 @@
 		041F1F46229ACBA80036FCC4 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				041F1F47229ACBCF0036FCC4 /* CroppingType.swift */,
+				041F1F47229ACBCF0036FCC4 /* CroppingShapeLayer.swift */,
+				04F090B2229D164700C7F943 /* ShapeLayerType.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -287,7 +290,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				041F1F45229AC09A0036FCC4 /* GIZoomingScrollView.swift in Sources */,
-				041F1F48229ACBCF0036FCC4 /* CroppingType.swift in Sources */,
+				04F090B3229D164700C7F943 /* ShapeLayerType.swift in Sources */,
+				041F1F48229ACBCF0036FCC4 /* CroppingShapeLayer.swift in Sources */,
 				041F1F40229ABF9C0036FCC4 /* GIImageCropVC.swift in Sources */,
 				041F1F11229ABE9B0036FCC4 /* AppDelegate.swift in Sources */,
 			);
