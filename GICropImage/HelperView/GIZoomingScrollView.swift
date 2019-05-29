@@ -10,9 +10,8 @@ import UIKit
 
 class GIZoomingScrollView: UIScrollView {
 
-    var imageView : UIImageView?
+    fileprivate var imageView : UIImageView?
     
-   
     func configureWithImage(_ image: UIImage) {
         if ((imageView) != nil) {
            self.imageView?.image = image

@@ -8,25 +8,39 @@
 
 import UIKit
 
+enum ShapeLayerType {
+    case circle
+    case square
+}
 
 protocol ShapeLayerTargetProperties {
-    var getLayerType : GeneralShapeLayerProperties {get}
+    var getLayerType    : GeneralShapeLayerProperties {get}
+    var colorProperties : GICropImageOptionsProtocol  {get}
 }
 
 enum ShapeLayerTarget {
-    case circle(view: UIView)
-    case square(view: UIView)
+    case circle(view: UIView, prop: GICropImageOptionsProtocol)
+    case square(view: UIView, prop: GICropImageOptionsProtocol)
 }
 
 extension ShapeLayerTarget : ShapeLayerTargetProperties {
     
+    var colorProperties: GICropImageOptionsProtocol {
+        switch self {
+        case .circle(_,let prop):
+            return prop
+        case .square(_,let prop):
+            return prop
+        }
+    }
+    
     var getLayerType: GeneralShapeLayerProperties {
         switch self {
-        case .circle(let view):
-            let circleShapeLayer = CircleShapeLayer(superView: view)
+        case .circle(let view,_):
+            let circleShapeLayer = CircleShapeLayer(options: colorProperties, superView: view)
             return circleShapeLayer
-        case .square(let view):
-            let squareShapeLayer = SquareShapeLayer(superView: view)
+        case .square(let view,_):
+            let squareShapeLayer = SquareShapeLayer(options: colorProperties, superView: view)
             return squareShapeLayer
         }
     }

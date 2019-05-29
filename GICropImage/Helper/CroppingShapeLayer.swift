@@ -13,11 +13,13 @@ protocol ShapeLayerDrawing {
     func draw()
 }
 
+
 protocol GeneralShapeLayerProperties: ShapeLayerDrawing  {
-    var superView           : UIView        {get set}
-    var blurFilterMask      : CAShapeLayer  {get}
-    var blurFilterOrigin    : CGPoint       {get}
-    var blurFilterDiameter  : CGFloat       {get}
+    var superView           : UIView                     {get set}
+    var blurFilterMask      : CAShapeLayer               {get}
+    var blurFilterOrigin    : CGPoint                    {get}
+    var blurFilterDiameter  : CGFloat                    {get}
+    var options             : GICropImageOptionsProtocol {get}
 }
 
 extension GeneralShapeLayerProperties {
@@ -26,10 +28,10 @@ extension GeneralShapeLayerProperties {
         maskLayer.actions = [
             "path" : NSNull()
         ]
-        maskLayer.fillColor = UIColor.black.cgColor
-        maskLayer.fillRule = .evenOdd
-        maskLayer.frame    = superView.bounds
-        maskLayer.opacity  = 0.8;
+        maskLayer.fillColor = options.backgroundFillColor.cgColor
+        maskLayer.fillRule  = .evenOdd
+        maskLayer.frame     = superView.bounds
+        maskLayer.opacity   = options.backgroundOpacity;
         return maskLayer
     }
     
@@ -53,15 +55,15 @@ protocol SquareShapeLayerProperties: GeneralShapeLayerProperties {
 }
 
 
-
 struct CircleShapeLayer : CircleShapeLayerProperties {
+    var options: GICropImageOptionsProtocol
     var superView: UIView
     
     internal var ovalRectMask: CAShapeLayer {
-        let ovalRectLayer = CAShapeLayer()
-        ovalRectLayer.strokeColor = UIColor.white.withAlphaComponent(0.8).cgColor
+        let ovalRectLayer         = CAShapeLayer()
+        ovalRectLayer.strokeColor = options.maskLayerStrokeColor.cgColor
         ovalRectLayer.fillColor   = UIColor.clear.cgColor;
-        ovalRectLayer.lineWidth   = 3;
+        ovalRectLayer.lineWidth   = options.maskLayerLineWitdh;
         return ovalRectLayer
     }
     
@@ -80,8 +82,8 @@ struct CircleShapeLayer : CircleShapeLayerProperties {
         blurRegionPath.addEllipse(in: ovalRect, transform: .identity)
         let ovalRegionPath     = UIBezierPath(ovalIn: ovalRect)
         
-        let filterAreaLayer = blurFilterMask
-        let ovalAreaLayer   = ovalRectMask
+        let filterAreaLayer  = blurFilterMask
+        let ovalAreaLayer    = ovalRectMask
         
         filterAreaLayer.path = blurRegionPath
         ovalAreaLayer.path   = ovalRegionPath.cgPath
@@ -94,10 +96,11 @@ struct CircleShapeLayer : CircleShapeLayerProperties {
 
 
 struct SquareShapeLayer : SquareShapeLayerProperties {
+    var options: GICropImageOptionsProtocol
     var superView: UIView
     
     var squareRectMask: CAShapeLayer {
-        let ovalRectLayer = CAShapeLayer()
+        let ovalRectLayer         = CAShapeLayer()
         ovalRectLayer.strokeColor = UIColor.white.withAlphaComponent(0.8).cgColor
         ovalRectLayer.fillColor   = UIColor.clear.cgColor;
         ovalRectLayer.lineWidth   = 3;

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041663F8229EA12B0063140E /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041663F7229EA12B0063140E /* Example.swift */; };
+		041663FA229EA2630063140E /* GICropImageOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041663F9229EA2630063140E /* GICropImageOptions.swift */; };
 		041F1F11229ABE9B0036FCC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F1F10229ABE9B0036FCC4 /* AppDelegate.swift */; };
 		041F1F16229ABE9C0036FCC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041F1F14229ABE9C0036FCC4 /* Main.storyboard */; };
 		041F1F18229ABE9C0036FCC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041F1F17229ABE9C0036FCC4 /* Assets.xcassets */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		041663F7229EA12B0063140E /* Example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
+		041663F9229EA2630063140E /* GICropImageOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GICropImageOptions.swift; sourceTree = "<group>"; };
 		041F1F0D229ABE9B0036FCC4 /* GICropImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GICropImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		041F1F10229ABE9B0036FCC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		041F1F15229ABE9C0036FCC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				041F1F3F229ABF9C0036FCC4 /* GIImageCropVC.swift */,
+				041663F7229EA12B0063140E /* Example.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 		041F1F46229ACBA80036FCC4 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				041663F9229EA2630063140E /* GICropImageOptions.swift */,
 				041F1F47229ACBCF0036FCC4 /* CroppingShapeLayer.swift */,
 				04F090B2229D164700C7F943 /* ShapeLayerType.swift */,
 			);
@@ -290,7 +296,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				041F1F45229AC09A0036FCC4 /* GIZoomingScrollView.swift in Sources */,
+				041663FA229EA2630063140E /* GICropImageOptions.swift in Sources */,
 				04F090B3229D164700C7F943 /* ShapeLayerType.swift in Sources */,
+				041663F8229EA12B0063140E /* Example.swift in Sources */,
 				041F1F48229ACBCF0036FCC4 /* CroppingShapeLayer.swift in Sources */,
 				041F1F40229ABF9C0036FCC4 /* GIImageCropVC.swift in Sources */,
 				041F1F11229ABE9B0036FCC4 /* AppDelegate.swift in Sources */,
