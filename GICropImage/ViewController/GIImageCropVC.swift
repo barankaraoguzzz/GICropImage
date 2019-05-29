@@ -10,18 +10,25 @@ import UIKit
 
 class GIImageCropVC: UIViewController {
 
+    @IBOutlet weak var scrollView   : GIZoomingScrollView!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var bottomView   : UIView!
+    @IBOutlet weak var choiceButton : UIButton!
+    @IBOutlet weak var cancelButton : UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.getShape(.circle(view: self.view)).draw()
-        self.getShape(.square(view: self.view)).draw()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.scrollView.configureWithImage(UIImage(named: "prience_of_persia")!)
+        self.drawShapes(.circle(view: self.containerView))
         
     }
 
-    @discardableResult
-    func getShape(_ shapeType: ShapeLayerTarget) -> GeneralShapeLayerProperties {
-        return shapeType.getLayerType
+    func drawShapes(_ shapeType: ShapeLayerTarget) {
+        shapeType.getLayerType.draw()
     }
-    
-    
 }

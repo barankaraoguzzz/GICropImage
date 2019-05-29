@@ -14,14 +14,17 @@ protocol ShapeLayerDrawing {
 }
 
 protocol GeneralShapeLayerProperties: ShapeLayerDrawing  {
-    var superView           : UIView {get set}
-    var blurFilterMask      : CAShapeLayer {get}
-    var blurFilterOrigin    : CGPoint {get}
+    var superView           : UIView        {get set}
+    var blurFilterMask      : CAShapeLayer  {get}
+    var blurFilterOrigin    : CGPoint       {get}
 }
 
 extension GeneralShapeLayerProperties {
-    internal var blurFilterMask : CAShapeLayer {
+    var blurFilterMask : CAShapeLayer {
         let maskLayer = CAShapeLayer()
+        maskLayer.actions = [
+            "path" : NSNull()
+        ]
         maskLayer.fillColor = UIColor.black.cgColor
         maskLayer.fillRule = .evenOdd
         maskLayer.frame    = superView.bounds
@@ -29,16 +32,17 @@ extension GeneralShapeLayerProperties {
         return maskLayer
     }
     
-    internal var blurFilterOrigin: CGPoint {
+    var blurFilterOrigin: CGPoint {
         return (self.superView.center)
     }
 }
 
 protocol CircleShapeLayerProperties: GeneralShapeLayerProperties {
-    var ovalRectMask  : CAShapeLayer {get}
-    var ovalRect      : CGRect {get}
-    var blurFilterDiameter  : CGFloat {get}
+    var ovalRectMask  : CAShapeLayer    {get}
+    var ovalRect      : CGRect          {get}
+    var blurFilterDiameter  : CGFloat   {get}
 }
+
 
 
 struct CircleShapeLayer : CircleShapeLayerProperties {
@@ -64,6 +68,21 @@ struct CircleShapeLayer : CircleShapeLayerProperties {
     }
     
     func draw() {
-        print(blurFilterOrigin)
+        let blurFilterRadius: CGFloat = (blurFilterDiameter) * 0.5
+        let ovalRect = CGRect(x: blurFilterOrigin.x - blurFilterRadius, y: blurFilterOrigin.y - blurFilterRadius, width: blurFilterDiameter, height: blurFilterDiameter)
+        let blurRegionPath = CGMutablePath()
+        blurRegionPath.addRect(self.superView.bounds, transform: .identity)
+        blurRegionPath.addEllipse(in: ovalRect, transform: .identity)
+        let ovalRegionPath     = UIBezierPath(ovalIn: ovalRect)
+        
+        let filterAreaLayer = blurFilterMask
+        let ovalAreaLayer   = ovalRectMask
+        
+        filterAreaLayer.path = blurRegionPath
+        ovalAreaLayer.path   = ovalRegionPath.cgPath
+        
+        self.superView.backgroundColor = UIColor.clear;
+        self.superView.layer.addSublayer(filterAreaLayer)
+        self.superView.layer.addSublayer(ovalAreaLayer)
     }
 }

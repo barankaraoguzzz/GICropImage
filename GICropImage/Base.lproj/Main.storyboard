@@ -91,6 +91,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8Be-AU-wVl"/>
                     </view>
+                    <connections>
+                        <outlet property="bottomView" destination="oEh-oO-jCZ" id="7UK-uR-oVj"/>
+                        <outlet property="cancelButton" destination="0qK-fR-CbS" id="fDs-bC-jMh"/>
+                        <outlet property="choiceButton" destination="6gI-hI-fRP" id="8qn-Ha-2TH"/>
+                        <outlet property="containerView" destination="AJa-IY-rnF" id="WEo-VG-T2C"/>
+                        <outlet property="scrollView" destination="pjh-af-aXZ" id="fQi-ln-1kx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dui-Dy-TXS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
