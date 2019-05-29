@@ -24,7 +24,7 @@ class GIImageCropVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.scrollView.configureWithImage(UIImage(named: "prience_of_persia")!)
-        self.drawShapes(.circle(view: self.containerView))
+        self.drawShapes(.square(view: self.containerView))
         
     }
 

@@ -26,8 +26,8 @@ extension ShapeLayerTarget : ShapeLayerTargetProperties {
             let circleShapeLayer = CircleShapeLayer(superView: view)
             return circleShapeLayer
         case .square(let view):
-            let circleShapeLayer = CircleShapeLayer(superView: view)
-            return circleShapeLayer
+            let squareShapeLayer = SquareShapeLayer(superView: view)
+            return squareShapeLayer
         }
     }
     
