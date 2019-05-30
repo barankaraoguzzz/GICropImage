@@ -24,20 +24,17 @@ class GIImageCropVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.scrollView.configureWithImage(UIImage(named: "prience_of_persia")!)
-        
         var options : GICropImageOptionsProtocol? = GICropImageOptions()
-        options?.backgroundFillColor = UIColor.red
         options?.shapeLayerType = .square
         self.drawShapes(options)
-        
     }
 
     func drawShapes(_ options: GICropImageOptionsProtocol!) {
         switch options.shapeLayerType {
         case .circle:
-            ShapeLayerTarget.circle(view: self.containerView, prop: options).getLayerType.draw()
+            GIShapeLayerTarget.circle(view: self.containerView, prop: options).getLayerType.draw()
         case .square:
-            ShapeLayerTarget.square(view: self.containerView, prop: options).getLayerType.draw()
+            GIShapeLayerTarget.square(view: self.containerView, prop: options).getLayerType.draw()
         }
     }
 }

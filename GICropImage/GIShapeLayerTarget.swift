@@ -8,22 +8,22 @@
 
 import UIKit
 
-enum ShapeLayerType {
+enum GIShapeLayerType {
     case circle
     case square
 }
 
-protocol ShapeLayerTargetProperties {
+protocol GIShapeLayerTargetProperties {
     var getLayerType    : GeneralShapeLayerProperties {get}
     var colorProperties : GICropImageOptionsProtocol  {get}
 }
 
-enum ShapeLayerTarget {
+enum GIShapeLayerTarget {
     case circle(view: UIView, prop: GICropImageOptionsProtocol)
     case square(view: UIView, prop: GICropImageOptionsProtocol)
 }
 
-extension ShapeLayerTarget : ShapeLayerTargetProperties {
+extension GIShapeLayerTarget : GIShapeLayerTargetProperties {
     
     var colorProperties: GICropImageOptionsProtocol {
         switch self {

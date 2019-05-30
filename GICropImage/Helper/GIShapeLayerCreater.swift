@@ -13,7 +13,6 @@ protocol ShapeLayerDrawing {
     func draw()
 }
 
-
 protocol GeneralShapeLayerProperties: ShapeLayerDrawing  {
     var superView           : UIView                     {get set}
     var blurFilterMask      : CAShapeLayer               {get}
