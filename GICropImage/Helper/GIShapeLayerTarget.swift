@@ -15,6 +15,7 @@ enum GIShapeLayerType {
 
 protocol GIShapeLayerTargetProperties {
     var getLayerType    : GeneralShapeLayerProperties {get}
+    var croppedImage    : UIImage                     {get}
     var colorProperties : GICropImageOptionsProtocol  {get}
 }
 
@@ -43,6 +44,16 @@ extension GIShapeLayerTarget : GIShapeLayerTargetProperties {
             let squareShapeLayer = SquareShapeLayer(options: colorProperties, superView: view)
             return squareShapeLayer
         }
+    }
+    
+    var croppedImage: UIImage {
+        switch self {
+        case .circle(view: _, prop: _):break
+        case .square(view: _, prop: _):break
+        default: break
+            
+        }
+        return UIImage()
     }
     
 }

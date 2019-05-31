@@ -23,10 +23,13 @@ class GIImageCropVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.scrollView.configureWithImage(UIImage(named: "prience_of_persia")!)
+        
         var options : GICropImageOptionsProtocol? = GICropImageOptions()
         options?.shapeLayerType = .square
+        self.scrollView.configureWithImage(UIImage(named: "prience_of_persia")!, GIOptions: options!)
         self.drawShapes(options)
+        
+        
     }
 
     func drawShapes(_ options: GICropImageOptionsProtocol!) {
