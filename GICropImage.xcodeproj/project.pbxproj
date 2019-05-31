@@ -111,7 +111,6 @@
 		041F1F0F229ABE9B0036FCC4 /* GICropImage */ = {
 			isa = PBXGroup;
 			children = (
-				04F090B2229D164700C7F943 /* GIShapeLayerTarget.swift */,
 				041F1F46229ACBA80036FCC4 /* Helper */,
 				041F1F41229AC0130036FCC4 /* HelperView */,
 				041F1F3E229ABF7E0036FCC4 /* ViewController */,
@@ -162,6 +161,7 @@
 		041F1F46229ACBA80036FCC4 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				04F090B2229D164700C7F943 /* GIShapeLayerTarget.swift */,
 				041663F9229EA2630063140E /* GICropImageOptions.swift */,
 				041F1F47229ACBCF0036FCC4 /* GIShapeLayerCreater.swift */,
 				04DC2D7C229FAE1200830A2A /* GICropImageCalculater.swift */,

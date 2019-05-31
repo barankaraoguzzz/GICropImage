@@ -9,13 +9,14 @@
 import UIKit
 
 protocol GICropImageCalculater {
-    func croppingImage(_ imgView: UIImageView) -> UIImage
-    func scaleImage(_ img: UIImage, size: CGSize) -> UIImage
+    func croppingImage(_ scroolView: UIScrollView, img: UIImage) -> UIImage
+    func scaleImage(_ img: UIImage) -> UIImage?
+    var options : GICropImageOptionsProtocol {get}
 }
 
 extension GICropImageCalculater {
-    func scaleImage(_ img: UIImage, size: CGSize) -> UIImage? {
-        let newSize = CGSize(width: size.width, height: size.height)
+    func scaleImage(_ img: UIImage) -> UIImage? {
+        let newSize = options.imageScaleSize.rawValue
         UIGraphicsBeginImageContext(newSize)
         img.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
@@ -27,43 +28,44 @@ extension GICropImageCalculater {
     }
 }
 
-
-enum ImageScaleSize {
-    case s32x32
-    case s64x64
-    case s128x128
-    case s256x256
-    case s512x512
-    case s1024x1024
-    case customSize(size: CGFloat)
+struct GICircleCrop: GICropImageCalculater, GIImageCalculateContentSizeProtocol {
     
-}
-
-extension ImageScaleSize: RawRepresentable {
-    typealias RawValue = CGSize
+    var options: GICropImageOptionsProtocol
     
-    init?(rawValue: CGSize) {
-        return nil
-    }
-    
-    var rawValue: CGSize {
-        switch self {
-        case .s32x32:
-            return CGSize(width: 32, height: 32)
-        case .s64x64:
-            return CGSize(width: 64, height: 64)
-        case .s128x128:
-            return CGSize(width: 128, height: 128)
-        case .s256x256:
-            return CGSize(width: 256, height: 256)
-        case .s512x512:
-            return CGSize(width: 512, height: 512)
-        case .s1024x1024:
-            return CGSize(width: 1024, height: 1024)
-        case .customSize(let size): do {
-            return CGSize(width: size, height: size)
-            }
+    func croppingImage(_ scroolView: UIScrollView, img: UIImage) -> UIImage {
+        
+        var zoomingRect = CGRect()
+        let zoomScale   = img.size.height / self.calculateAspectFillSize(aspectRatio: img.size,
+                                                                         minumumSize: img.size).height
+        zoomingRect.origin.x    = abs(scroolView.contentOffset.x * zoomScale)
+        zoomingRect.origin.y    = abs(scroolView.contentOffset.y * zoomScale)
+        zoomingRect.size.width  = abs(scroolView.bounds.size.width  * zoomScale)
+        zoomingRect.size.height = abs(scroolView.bounds.size.height * zoomScale)
+        
+        UIGraphicsBeginImageContextWithOptions(zoomingRect.size, false, 0.0)
+        let drawingCGPoint = CGPoint(x: -zoomingRect.origin.x, y: -zoomingRect.origin.y)
+        img.draw(at: drawingCGPoint,
+                 blendMode: .copy,
+                 alpha: 1.0)
+        
+        
+        let croppedImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        guard let croppedResultImage = croppedImage else {
+            print("⚠⚠ Image cropped transaction is failed ⚠⚠")
+            fatalError()
         }
+        
+        if (options.isImageScale) {
+            let scaledImage = self.scaleImage(croppedResultImage)
+            guard let scaledResultImage = scaledImage else {
+                print("⚠⚠ Image scaled transaction is failed ⚠⚠")
+                fatalError()
+            }
+            return scaledResultImage
+        }
+        return croppedResultImage
     }
 
 }
