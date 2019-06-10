@@ -25,15 +25,27 @@
                                     <action selector="goCrop:" destination="Ny3-fb-1d1" eventType="touchUpInside" id="zA6-wD-pp7"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="prience_of_persia" translatesAutoresizingMaskIntoConstraints="NO" id="7WL-Fk-Iob">
+                                <rect key="frame" x="0.0" y="64" width="375" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="8CR-wl-43u"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="7WL-Fk-Iob" firstAttribute="leading" secondItem="oEW-YW-sNO" secondAttribute="leading" id="M8t-Ja-J7p"/>
+                            <constraint firstItem="7WL-Fk-Iob" firstAttribute="top" secondItem="oEW-YW-sNO" secondAttribute="top" id="TKS-KI-79b"/>
+                            <constraint firstItem="oEW-YW-sNO" firstAttribute="trailing" secondItem="7WL-Fk-Iob" secondAttribute="trailing" id="UVf-r8-POm"/>
                             <constraint firstItem="2on-3S-L2l" firstAttribute="centerY" secondItem="oEW-YW-sNO" secondAttribute="centerY" id="reM-m3-aUY"/>
                             <constraint firstItem="2on-3S-L2l" firstAttribute="centerX" secondItem="oEW-YW-sNO" secondAttribute="centerX" id="uwG-yW-gLU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oEW-YW-sNO"/>
                     </view>
                     <navigationItem key="navigationItem" id="UHD-xF-OXJ"/>
+                    <connections>
+                        <outlet property="testImageView" destination="7WL-Fk-Iob" id="GKI-jX-Q4k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ymZ-VZ-hUs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -87,6 +99,9 @@
                                         <state key="normal" title="Seç">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="choiceButtonAct:" destination="qFB-gJ-hFh" eventType="touchUpInside" id="va4-NW-6E8"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qK-fR-CbS">
                                         <rect key="frame" x="12" y="10" width="56" height="40"/>
@@ -94,6 +109,9 @@
                                         <state key="normal" title="Vazgeç">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="cancelButtonAct:" destination="qFB-gJ-hFh" eventType="touchUpInside" id="d30-AQ-dKf"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1370021049" green="0.1370021049" blue="0.1370021049" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -151,4 +169,7 @@
             <point key="canvasLocation" x="1780" y="1034.9325337331336"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="prience_of_persia" width="570" height="321"/>
+    </resources>
 </document>

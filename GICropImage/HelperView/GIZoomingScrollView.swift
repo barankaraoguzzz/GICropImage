@@ -12,12 +12,11 @@ class GIZoomingScrollView: UIScrollView, GIImageCalculateContentSizeProtocol, GI
 
     fileprivate var imageView       : UIImageView?
     fileprivate var options         : GICropImageOptionsProtocol?
-    fileprivate var circleCropper   : GICircleCrop?
+    fileprivate var circleCropper   : GISquareCrop?
     
     func configureWithImage(_ image: UIImage, GIOptions: GICropImageOptionsProtocol) {
         //Initials
         options = GIOptions
-        circleCropper = GICircleCrop(options: options!)
         
         if ((imageView) != nil) {
            self.imageView?.image = image
@@ -77,14 +76,8 @@ extension GIZoomingScrollView : UIScrollViewDelegate {
 
 //Mark -> Public Properties
 extension GIZoomingScrollView {
-    func getCroppedImage() -> UIImage? {
-        switch options!.shapeLayerType {
-        case .circle:
-            return circleCropper?.croppingImage(self, img: (self.imageView?.image)!)
-        case .square:
-            #warning("Burası boş kalmasın")
-            return UIImage()
-        }
+    func getImageView() -> UIImageView {
+        return self.imageView!
     }
 }
 

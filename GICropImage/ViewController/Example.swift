@@ -8,29 +8,31 @@
 
 import UIKit
 
-protocol Configure {
-    var fillColor : UIColor {get set}
-    var with      : Int     {get set}
-}
-
 class Example: UIViewController{
 
+    @IBOutlet weak var testImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func goCrop(_ sender: Any) {
      
-        
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "GIImageCropVC") as? GIImageCropVC
+        let options = GICropImageOptions()
+        options.shapeLayerType = .square
+        vc?.options = options
+        vc?.delegate = self
         self.navigationController?.pushViewController(vc!, animated: true)
         
-        
-        
     }
+}
+
+extension Example : GICropImageVCDelegate {
+    func getImage(_ croppedImage: UIImage) {
+        testImageView.image = croppedImage
+    }
+    
 }

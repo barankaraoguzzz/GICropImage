@@ -8,13 +8,20 @@
 
 import UIKit
 
-class GIImageCropVC: UIViewController {
+protocol GICropImageVCDelegate {
+    func getImage(_ croppedImage: UIImage)
+}
 
-    @IBOutlet weak var scrollView   : GIZoomingScrollView!
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var bottomView   : UIView!
-    @IBOutlet weak var choiceButton : UIButton!
-    @IBOutlet weak var cancelButton : UIButton!
+final class GIImageCropVC: UIViewController {
+
+    @IBOutlet fileprivate weak var scrollView   : GIZoomingScrollView!
+    @IBOutlet fileprivate weak var containerView: UIView!
+    @IBOutlet fileprivate weak var bottomView   : UIView!
+    @IBOutlet fileprivate weak var choiceButton : UIButton!
+    @IBOutlet fileprivate weak var cancelButton : UIButton!
+    
+    var delegate            : GICropImageVCDelegate?
+    var options             = GICropImageOptions()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,21 +30,40 @@ class GIImageCropVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        var options : GICropImageOptionsProtocol? = GICropImageOptions()
-        options?.shapeLayerType = .square
-        self.scrollView.configureWithImage(UIImage(named: "prience_of_persia")!, GIOptions: options!)
-        self.drawShapes(options)
-        
-        
+        self.scrollView.configureWithImage(UIImage(named: "prience_of_persia")!, GIOptions: options)
+        self.drawShapes(options)    
     }
-
+    
+   
+    @IBAction func choiceButtonAct(_ sender: Any) {
+        if (delegate != nil) {
+            delegate?.getImage(self.getCroppedImage(options))
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    @IBAction func cancelButtonAct(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
+    
     func drawShapes(_ options: GICropImageOptionsProtocol!) {
+        self.getGIShapeLayerTarget(options).getLayerType.draw()
+    }
+    
+    func getCroppedImage(_ options: GICropImageOptionsProtocol) -> UIImage {
+         return self.getGIShapeLayerTarget(options).cropImageCalculater.croppingImage(self.scrollView,
+                                                                                      imgView: self.scrollView.getImageView())
+    }
+    
+    
+    func getGIShapeLayerTarget(_ options: GICropImageOptionsProtocol!) -> GIShapeLayerTarget {
         switch options.shapeLayerType {
         case .circle:
-            GIShapeLayerTarget.circle(view: self.containerView, prop: options).getLayerType.draw()
+            return GIShapeLayerTarget.circle(view: self.containerView, prop: options)
         case .square:
-            GIShapeLayerTarget.square(view: self.containerView, prop: options).getLayerType.draw()
+            return GIShapeLayerTarget.square(view: self.containerView, prop: options)
         }
     }
 }

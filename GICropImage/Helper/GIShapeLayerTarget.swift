@@ -14,9 +14,9 @@ enum GIShapeLayerType {
 }
 
 protocol GIShapeLayerTargetProperties {
-    var getLayerType    : GeneralShapeLayerProperties {get}
-    var croppedImage    : UIImage                     {get}
-    var colorProperties : GICropImageOptionsProtocol  {get}
+    var getLayerType            : GeneralShapeLayerProperties {get}
+    var cropImageCalculater     : GICropImageCalculater       {get}
+    var properties              : GICropImageOptionsProtocol  {get}
 }
 
 enum GIShapeLayerTarget {
@@ -26,7 +26,7 @@ enum GIShapeLayerTarget {
 
 extension GIShapeLayerTarget : GIShapeLayerTargetProperties {
     
-    var colorProperties: GICropImageOptionsProtocol {
+    var properties: GICropImageOptionsProtocol {
         switch self {
         case .circle(_,let prop):
             return prop
@@ -38,22 +38,22 @@ extension GIShapeLayerTarget : GIShapeLayerTargetProperties {
     var getLayerType: GeneralShapeLayerProperties {
         switch self {
         case .circle(let view,_):
-            let circleShapeLayer = CircleShapeLayer(options: colorProperties, superView: view)
+            let circleShapeLayer = CircleShapeLayer(options: properties, superView: view)
             return circleShapeLayer
         case .square(let view,_):
-            let squareShapeLayer = SquareShapeLayer(options: colorProperties, superView: view)
+            let squareShapeLayer = SquareShapeLayer(options: properties, superView: view)
             return squareShapeLayer
         }
     }
     
-    var croppedImage: UIImage {
+    var cropImageCalculater: GICropImageCalculater {
         switch self {
-        case .circle(view: _, prop: _):break
-        case .square(view: _, prop: _):break
-        default: break
-            
+        case .circle(view: _, prop: _):
+            //Mark : TO DO
+            return GISquareCrop(options: properties)
+        case .square(view: _, prop: _):
+            return GISquareCrop(options: properties)
         }
-        return UIImage()
     }
     
 }

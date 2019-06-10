@@ -9,7 +9,7 @@
 import UIKit
 
 protocol GICropImageCalculater {
-    func croppingImage(_ scroolView: UIScrollView, img: UIImage) -> UIImage
+    func croppingImage(_ scroolView: UIScrollView, imgView: UIImageView) -> UIImage
     func scaleImage(_ img: UIImage) -> UIImage?
     var options : GICropImageOptionsProtocol {get}
 }
@@ -28,25 +28,26 @@ extension GICropImageCalculater {
     }
 }
 
-struct GICircleCrop: GICropImageCalculater, GIImageCalculateContentSizeProtocol {
+struct GISquareCrop: GICropImageCalculater, GIImageCalculateContentSizeProtocol {
     
     var options: GICropImageOptionsProtocol
     
-    func croppingImage(_ scroolView: UIScrollView, img: UIImage) -> UIImage {
+    func croppingImage(_ scroolView: UIScrollView, imgView: UIImageView) -> UIImage {
         
         var zoomingRect = CGRect()
-        let zoomScale   = img.size.height / self.calculateAspectFillSize(aspectRatio: img.size,
-                                                                         minumumSize: img.size).height
+        let zoomScale   = imgView.image!.size.height / self.calculateAspectFillSize(aspectRatio: imgView.image!.size,
+                                                                         minumumSize: imgView.frame.size).height
         zoomingRect.origin.x    = abs(scroolView.contentOffset.x * zoomScale)
         zoomingRect.origin.y    = abs(scroolView.contentOffset.y * zoomScale)
         zoomingRect.size.width  = abs(scroolView.bounds.size.width  * zoomScale)
         zoomingRect.size.height = abs(scroolView.bounds.size.height * zoomScale)
         
-        UIGraphicsBeginImageContextWithOptions(zoomingRect.size, false, 0.0)
+        UIGraphicsBeginImageContextWithOptions(zoomingRect.size, false, 1.0)
         let drawingCGPoint = CGPoint(x: -zoomingRect.origin.x, y: -zoomingRect.origin.y)
-        img.draw(at: drawingCGPoint,
-                 blendMode: .copy,
-                 alpha: 1.0)
+        let drawingImage = imgView.image
+        drawingImage!.draw(at: drawingCGPoint,
+                          blendMode: .copy,
+                          alpha: 1.0)
         
         
         let croppedImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -57,14 +58,14 @@ struct GICircleCrop: GICropImageCalculater, GIImageCalculateContentSizeProtocol 
             fatalError()
         }
         
-        if (options.isImageScale) {
-            let scaledImage = self.scaleImage(croppedResultImage)
-            guard let scaledResultImage = scaledImage else {
-                print("⚠⚠ Image scaled transaction is failed ⚠⚠")
-                fatalError()
-            }
-            return scaledResultImage
-        }
+//        if (options.isImageScale) {
+//            let scaledImage = self.scaleImage(croppedResultImage)
+//            guard let scaledResultImage = scaledImage else {
+//                print("⚠⚠ Image scaled transaction is failed ⚠⚠")
+//                fatalError()
+//            }
+//            return scaledResultImage
+//        }
         return croppedResultImage
     }
 
