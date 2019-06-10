@@ -20,7 +20,7 @@
 		041F1F48229ACBCF0036FCC4 /* GIShapeLayerCreater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F1F47229ACBCF0036FCC4 /* GIShapeLayerCreater.swift */; };
 		04DC2D7D229FAE1200830A2A /* GICropImageCalculater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DC2D7C229FAE1200830A2A /* GICropImageCalculater.swift */; };
 		04DC2D7F229FB1C800830A2A /* GIZoomingImageCalculater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DC2D7E229FB1C800830A2A /* GIZoomingImageCalculater.swift */; };
-		04F090B3229D164700C7F943 /* GIShapeLayerTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F090B2229D164700C7F943 /* GIShapeLayerTarget.swift */; };
+		04F090B3229D164700C7F943 /* GICroppingTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F090B2229D164700C7F943 /* GICroppingTarget.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +60,7 @@
 		041F1F47229ACBCF0036FCC4 /* GIShapeLayerCreater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIShapeLayerCreater.swift; sourceTree = "<group>"; };
 		04DC2D7C229FAE1200830A2A /* GICropImageCalculater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GICropImageCalculater.swift; sourceTree = "<group>"; };
 		04DC2D7E229FB1C800830A2A /* GIZoomingImageCalculater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIZoomingImageCalculater.swift; sourceTree = "<group>"; };
-		04F090B2229D164700C7F943 /* GIShapeLayerTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIShapeLayerTarget.swift; sourceTree = "<group>"; };
+		04F090B2229D164700C7F943 /* GICroppingTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GICroppingTarget.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +161,7 @@
 		041F1F46229ACBA80036FCC4 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				04F090B2229D164700C7F943 /* GIShapeLayerTarget.swift */,
+				04F090B2229D164700C7F943 /* GICroppingTarget.swift */,
 				041663F9229EA2630063140E /* GICropImageOptions.swift */,
 				041F1F47229ACBCF0036FCC4 /* GIShapeLayerCreater.swift */,
 				04DC2D7C229FAE1200830A2A /* GICropImageCalculater.swift */,
@@ -303,7 +303,7 @@
 			files = (
 				041F1F45229AC09A0036FCC4 /* GIZoomingScrollView.swift in Sources */,
 				041663FA229EA2630063140E /* GICropImageOptions.swift in Sources */,
-				04F090B3229D164700C7F943 /* GIShapeLayerTarget.swift in Sources */,
+				04F090B3229D164700C7F943 /* GICroppingTarget.swift in Sources */,
 				04DC2D7D229FAE1200830A2A /* GICropImageCalculater.swift in Sources */,
 				041663F8229EA12B0063140E /* Example.swift in Sources */,
 				041F1F48229ACBCF0036FCC4 /* GIShapeLayerCreater.swift in Sources */,

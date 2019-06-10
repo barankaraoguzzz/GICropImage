@@ -8,23 +8,23 @@
 
 import UIKit
 
-enum GIShapeLayerType {
+enum GICroppingType {
     case circle
     case square
 }
 
-protocol GIShapeLayerTargetProperties {
+protocol GICroppingTargetProperties {
     var getLayerType            : GeneralShapeLayerProperties {get}
     var cropImageCalculater     : GICropImageCalculater       {get}
     var properties              : GICropImageOptionsProtocol  {get}
 }
 
-enum GIShapeLayerTarget {
+enum GICroppingTarget {
     case circle(view: UIView, prop: GICropImageOptionsProtocol)
     case square(view: UIView, prop: GICropImageOptionsProtocol)
 }
 
-extension GIShapeLayerTarget : GIShapeLayerTargetProperties {
+extension GICroppingTarget : GICroppingTargetProperties {
     
     var properties: GICropImageOptionsProtocol {
         switch self {

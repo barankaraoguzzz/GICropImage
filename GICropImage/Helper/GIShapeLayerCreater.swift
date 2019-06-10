@@ -100,9 +100,9 @@ struct SquareShapeLayer : SquareShapeLayerProperties {
     
     var squareRectMask: CAShapeLayer {
         let ovalRectLayer         = CAShapeLayer()
-        ovalRectLayer.strokeColor = UIColor.white.withAlphaComponent(0.8).cgColor
+        ovalRectLayer.strokeColor = options.maskLayerStrokeColor.cgColor
         ovalRectLayer.fillColor   = UIColor.clear.cgColor;
-        ovalRectLayer.lineWidth   = 3;
+        ovalRectLayer.lineWidth   = options.maskLayerLineWitdh;
         return ovalRectLayer
     }
     

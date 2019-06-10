@@ -13,7 +13,7 @@ protocol GICropImageOptionsProtocol {
     var backgroundOpacity   : Float             {get set}
     var maskLayerStrokeColor: UIColor           {get set}
     var maskLayerLineWitdh  : CGFloat           {get set}
-    var shapeLayerType      : GIShapeLayerType  {get set}
+    var shapeLayerType      : GICroppingType    {get set}
     var imageScaleSize      : ImageScaleSize    {get set}
     var isImageScale        : Bool              {get set}
 }
@@ -23,7 +23,7 @@ final class GICropImageOptions : GICropImageOptionsProtocol {
     var backgroundOpacity   : Float                 = 0.8
     var maskLayerStrokeColor: UIColor               = UIColor.white.withAlphaComponent(0.8)
     var maskLayerLineWitdh  : CGFloat               = 3.0
-    var shapeLayerType      : GIShapeLayerType      = .circle
+    var shapeLayerType      : GICroppingType        = .circle
     var imageScaleSize      : ImageScaleSize        = .s1024x1024
     var isImageScale        : Bool                  = true
 }

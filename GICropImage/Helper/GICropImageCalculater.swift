@@ -58,14 +58,14 @@ struct GISquareCrop: GICropImageCalculater, GIImageCalculateContentSizeProtocol 
             fatalError()
         }
         
-//        if (options.isImageScale) {
-//            let scaledImage = self.scaleImage(croppedResultImage)
-//            guard let scaledResultImage = scaledImage else {
-//                print("⚠⚠ Image scaled transaction is failed ⚠⚠")
-//                fatalError()
-//            }
-//            return scaledResultImage
-//        }
+        if (options.isImageScale) {
+            let scaledImage = self.scaleImage(croppedResultImage)
+            guard let scaledResultImage = scaledImage else {
+                print("⚠⚠ Image scaled transaction is failed ⚠⚠")
+                fatalError()
+            }
+            return scaledResultImage
+        }
         return croppedResultImage
     }
 

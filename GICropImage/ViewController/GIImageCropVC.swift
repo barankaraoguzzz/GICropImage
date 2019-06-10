@@ -12,7 +12,7 @@ protocol GICropImageVCDelegate {
     func getImage(_ croppedImage: UIImage)
 }
 
-final class GIImageCropVC: UIViewController {
+open class GIImageCropVC: UIViewController {
 
     @IBOutlet fileprivate weak var scrollView   : GIZoomingScrollView!
     @IBOutlet fileprivate weak var containerView: UIView!
@@ -23,12 +23,12 @@ final class GIImageCropVC: UIViewController {
     var delegate            : GICropImageVCDelegate?
     var options             = GICropImageOptions()
     
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.scrollView.configureWithImage(UIImage(named: "prience_of_persia")!, GIOptions: options)
         self.drawShapes(options)    
@@ -58,12 +58,12 @@ final class GIImageCropVC: UIViewController {
     }
     
     
-    func getGIShapeLayerTarget(_ options: GICropImageOptionsProtocol!) -> GIShapeLayerTarget {
+    func getGIShapeLayerTarget(_ options: GICropImageOptionsProtocol!) -> GICroppingTarget {
         switch options.shapeLayerType {
         case .circle:
-            return GIShapeLayerTarget.circle(view: self.containerView, prop: options)
+            return GICroppingTarget.circle(view: self.containerView, prop: options)
         case .square:
-            return GIShapeLayerTarget.square(view: self.containerView, prop: options)
+            return GICroppingTarget.square(view: self.containerView, prop: options)
         }
     }
 }
